@@ -2,11 +2,11 @@
   "name": "frontend-takehome-parcel",
   "version": "0.0.0",
   "description": "Teachable frontend takehome with Parcel.",
-  "main": "server.js",
+  "main": "src/server/server.js",
   "scripts": {
     "build": "./node_modules/.bin/parcel build ./index.html",
-    "dev": "concurrently './node_modules/.bin/parcel ./index.html' 'node ./server'",
-    "start": "NODE_ENV=production node ./server",
+    "dev": "concurrently './node_modules/.bin/parcel ./index.html' 'node ./src/server/server'",
+    "start": "NODE_ENV=production node ./src/server/server",
     "test": "echo 'Your test command goes here'"
   },
   "repository": {
@@ -24,6 +24,7 @@
     "express": "^4.16.3",
     "parcel": "^1.9.7",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.3.2"
   }
 }
