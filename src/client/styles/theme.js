@@ -1,7 +1,8 @@
 const Theme = {
-    background: "#F9F7EE",
-    primary: "#484AB3",
-    secondary: "#1c00a8",
+    background: '#f9f7ee',
+    primary: '#484ab3',
+    secondary: '#e9573f',
+    border: '#dfe1e5',
 };
 
 export default Theme;

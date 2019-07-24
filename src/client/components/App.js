@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
 
+import Search from './Search';
+
 const AppStyled = styled.div`
+    display: flex;
+    justify-content: center;
     height: 100%;
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     font-family: Helvetica;
     background: ${props => props.theme.background};
@@ -14,11 +18,17 @@ const AppStyled = styled.div`
 
 class App extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+        };
+    }
+
     render() {
         return (
             <ThemeProvider theme={theme}>
                 <AppStyled>
-                    <h1>Liam</h1>
+                    <Search />
                 </AppStyled>
             </ThemeProvider>
         );
