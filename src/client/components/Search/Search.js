@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 
+// components
 import SearchInput from "./SearchInput";
 import SearchSubmit from "./SearchSubmit";
 
+// services
 import { search } from "../../api/gemApi";
 
 const SearchStyled = styled.form`
@@ -18,9 +20,7 @@ class Search extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            query: '',
-        }
+        this.state = { query: '', };
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
     }
