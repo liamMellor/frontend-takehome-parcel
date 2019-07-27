@@ -21,14 +21,28 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        };
+            results: [],
+            favorites: [],
+            loading: false,
+        }
+        this.onSearchComplete = this.onSearchComplete.bind(this);
+    }
+
+    onSearchComplete(results) {
+        this.setState({
+            results,
+        });
     }
 
     render() {
         return (
             <ThemeProvider theme={theme}>
                 <AppStyled>
-                    <Search />
+                    <Search
+                        onSearchComplete={this.onSearchComplete}
+                    />
+                    {/* <Results /> */}
+                    {/* <Favorites /> */}
                 </AppStyled>
             </ThemeProvider>
         );

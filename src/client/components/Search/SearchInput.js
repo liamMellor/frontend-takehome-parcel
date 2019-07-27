@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "../../styles/theme";
+import React  from "react";
+import PropTypes from 'prop-types';
+import styled from "styled-components";
 
 const SearchInputStyled = styled.input`
     height: 44px;
@@ -10,16 +10,21 @@ const SearchInputStyled = styled.input`
     border: 1px solid ${props => props.theme.border};
 `;
 
-class SearchInput extends Component {
+const SearchInput = ({ value, onChange }) => {
 
-    render() {
-        return (
-            <SearchInputStyled
-                placeholder="Search for gems"
-            />
-        );
-    }
+    return (
+        <SearchInputStyled
+            placeholder="Search for gems"
+            value={value}
+            onChange={onChange}
+        />
+    );
 
-}
+};
+
+SearchInput.propTypes = {
+    value: PropTypes.string,
+    onChange: PropTypes.func,
+};
 
 export default SearchInput;
