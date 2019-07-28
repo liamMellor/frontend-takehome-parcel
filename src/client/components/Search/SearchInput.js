@@ -10,10 +10,11 @@ const SearchInputStyled = styled.input`
     background-color: ${props => props.theme.background} ;
     border: 2px solid ${props => props.theme.primary};
     color: ${props => props.theme.primary};
-    font-size: 16px
-    ::placeholder,
-    ::-webkit-input-placeholder {
-        color: ${props => props.theme.primary};
+    font-size: 16px;
+    outline: none;
+    &:focus {
+        border-color: rgba(72, 74, 179, .7);
+        box-shadow: 0 1px 10px 0 rgba(32,33,36,0.28);
     }
 `;
 

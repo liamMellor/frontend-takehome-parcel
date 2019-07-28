@@ -18,6 +18,13 @@ class ResultCell extends Component {
             <ResultCellStyled
             >
                 <div>{result.name}</div>
+                // Name
+                // info
+                // authors
+                // docs_uri
+                // gem_uri (download)
+                // project_uri (link)
+                // version
             </ResultCellStyled>
         );
 
