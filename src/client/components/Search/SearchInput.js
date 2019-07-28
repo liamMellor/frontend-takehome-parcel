@@ -10,6 +10,7 @@ const SearchInputStyled = styled.input`
     background-color: ${props => props.theme.background} ;
     border: 2px solid ${props => props.theme.primary};
     color: ${props => props.theme.primary};
+    font-size: 16px
     ::placeholder,
     ::-webkit-input-placeholder {
         color: ${props => props.theme.primary};
@@ -18,7 +19,6 @@ const SearchInputStyled = styled.input`
 
 const SearchInput = ({ value, onChange }) => (
     <SearchInputStyled
-        placeholder="Search for gems"
         value={value}
         onChange={onChange}
     />

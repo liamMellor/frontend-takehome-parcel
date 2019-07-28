@@ -25,7 +25,11 @@ const AppStyled = styled.div`
     /* min-width 768pxpx */
     @media ${props => props.theme.tabletBreak} {
     }
+`;
 
+const Header = styled.h1`
+    margin: 0 0 10px;
+    font-family: ${props => props.theme.font};
 `;
 
 class App extends Component {
@@ -56,6 +60,7 @@ class App extends Component {
                 <AppStyled
                     pristine={pristine}
                 >
+                    <Header>Search for Ruby Gems</Header>
                     <Search
                         onSearchComplete={this.onSearchComplete}
                     />
