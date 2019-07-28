@@ -7,6 +7,7 @@ import Results from './Results';
 
 const AppStyled = styled.div`
     display: flex;
+    flex-flow: column nowrap;
     justify-content: center;
     height: 100%;
     margin: 0 auto;
@@ -39,10 +40,13 @@ class App extends Component {
     }
 
     onSearchComplete(results) {
-        this.setState({ results, });
+        this.setState({ results });
     }
 
     render() {
+
+        const { results } = this.state;
+
         return (
             <ThemeProvider theme={theme}>
                 <AppStyled>
@@ -50,7 +54,7 @@ class App extends Component {
                         onSearchComplete={this.onSearchComplete}
                     />
                     <Results
-
+                        results={results}
                     />
                     {/* <Favorites /> */}
                 </AppStyled>
