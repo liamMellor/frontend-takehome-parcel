@@ -13,6 +13,7 @@ const SearchSubmitStyled = styled.button`
     font-size: 24px;
     background: none;
     border: none;
+    color: ${props => props.theme.primary};
     cursor: pointer;
 `;
 

@@ -7,7 +7,13 @@ const SearchInputStyled = styled.input`
     width: 100%;
     padding: 0px 40px 0 24px;
     border-radius: 24px;
-    border: 1px solid ${props => props.theme.border};
+    background-color: ${props => props.theme.background} ;
+    border: 2px solid ${props => props.theme.primary};
+    color: ${props => props.theme.primary};
+    ::placeholder,
+    ::-webkit-input-placeholder {
+        color: ${props => props.theme.primary};
+    }
 `;
 
 const SearchInput = ({ value, onChange }) => (

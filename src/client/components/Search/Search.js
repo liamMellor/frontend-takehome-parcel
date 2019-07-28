@@ -13,7 +13,7 @@ const SearchStyled = styled.form`
     position: relative;
     display: flex;
     flex-flow: row nowrap;
-    width: 300px;
+    width: 100%;
     margin-bottom: 20px;
 `;
 
