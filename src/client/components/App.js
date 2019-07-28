@@ -9,9 +9,9 @@ const AppStyled = styled.div`
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    height: 100%;
+    height: ${props => props.pristine ? `100vh` : `100%`};
+    padding: ${props => props.pristine ? `0 20px` : `20px 20px 0`};
     margin: 0 auto;
-    padding: 20px 20px 0;
     font-family: Helvetica;
     background: ${props => props.theme.background};
     color: ${props => props.theme.primary};
@@ -35,21 +35,27 @@ class App extends Component {
         this.state = {
             results: [],
             favorites: [],
+            pristine: true,
         }
         this.onSearchComplete = this.onSearchComplete.bind(this);
     }
 
     onSearchComplete(results) {
-        this.setState({ results });
+        this.setState({
+            results,
+            pristine: false,
+        });
     }
 
     render() {
 
-        const { results } = this.state;
+        const { results, pristine } = this.state;
 
         return (
             <ThemeProvider theme={theme}>
-                <AppStyled>
+                <AppStyled
+                    pristine={pristine}
+                >
                     <Search
                         onSearchComplete={this.onSearchComplete}
                     />
