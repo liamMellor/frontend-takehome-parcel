@@ -1,6 +1,7 @@
 import React  from "react";
+import PropTypes from 'prop-types';
 import styled from "styled-components";
-import { MdSearch } from "react-icons/md";
+import { MdSearch, MdAutorenew } from "react-icons/md";
 
 const SearchSubmitStyled = styled.button`
     display: flex;
@@ -15,12 +16,31 @@ const SearchSubmitStyled = styled.button`
     cursor: pointer;
 `;
 
-const SearchSubmit = () => (
+const Loader = styled(MdAutorenew)`
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    @keyframes spin {
+        from {
+            transform:rotate(0deg);
+        }
+        to {
+            transform:rotate(360deg);
+        }
+    }
+`;
+
+const SearchSubmit = ({ loading }) => (
     <SearchSubmitStyled
         type="submit"
     >
-        <MdSearch /> 
+        {loading ? <Loader /> : <MdSearch />}
     </SearchSubmitStyled>
 );
+
+SearchSubmit.propTypes = {
+    loading: PropTypes.bool,
+};
 
 export default SearchSubmit;

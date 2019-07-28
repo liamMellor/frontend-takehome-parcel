@@ -21,16 +21,21 @@ class Search extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { query: '', };
+        this.state = {
+            query: '',
+            loading: false,
+        };
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
     }
 
     onSubmit(event) {
         event.preventDefault();
+        this.setState({ loading: true });
         search(this.state.query).then(data => {
+            this.setState({ loading: false });
             this.props.onSearchComplete(data);
-        })
+        });
     }
 
     onChange(event) {
@@ -39,7 +44,7 @@ class Search extends Component {
 
     render() {
 
-        const { query } = this.state;
+        const { query, loading } = this.state;
 
         return (
             <SearchStyled
@@ -49,7 +54,9 @@ class Search extends Component {
                     value={query}
                     onChange={this.onChange}
                 />
-                <SearchSubmit />
+                <SearchSubmit
+                    loading={loading}
+                />
             </SearchStyled>
         );
 

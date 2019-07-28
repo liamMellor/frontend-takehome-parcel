@@ -23,7 +23,6 @@ class App extends Component {
         this.state = {
             results: [],
             favorites: [],
-            loading: false,
         }
         this.onSearchComplete = this.onSearchComplete.bind(this);
     }
