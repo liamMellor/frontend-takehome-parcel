@@ -14,7 +14,6 @@ const SearchStyled = styled.form`
     display: flex;
     flex-flow: row nowrap;
     width: 100%;
-    margin-bottom: 32px;
 `;
 
 class Search extends Component {

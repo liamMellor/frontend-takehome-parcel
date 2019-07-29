@@ -25,6 +25,9 @@ const ResultCellInfo = styled.div`
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
+    a:hover {
+        text-decoration: underline;
+    }
     h3, div {
         margin: 0 0 8px;
     }
@@ -37,21 +40,23 @@ const ResultCellDescription = styled.div`
 const ResultCellIcons = styled.div`
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 100%;
     font-size: 24px;
+    margin-top: 4px;
     div, a {
         display: flex;
         align-items: center;
+        margin-right: 24px;
     }
     /* min-width 568px */
     @media ${props => props.theme.phoneBreak} {
         justify-content: flex-end;
         align-items: center;
         width: inherit;
-        margin-left: 32px;
+        margin: 0 0 0 32px;
         div, a {
-            margin-left: 24px;
+            margin: 0 0 0 24px;
         }
     }
 `;

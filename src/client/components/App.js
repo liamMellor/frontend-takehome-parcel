@@ -9,25 +9,36 @@ const AppStyled = styled.div`
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    height: ${props => props.pristine ? `100vh` : `100%`};
-    padding: ${props => props.pristine ? `0 20px` : `20px 20px 0`};
     margin: 0 auto;
-    font-family: Helvetica;
+    height: ${props => props.pristine ? `100vh` : `100%`};
+    padding: ${props => props.pristine ? `0 20px` : `192px 20px 0`};
     background: ${props => props.theme.background};
     color: ${props => props.theme.primary};
-
-    /* min-width 568px */
+    font-family: Helvetica;
+    @media (min-width: 425px) {
+        /* Special case where header copy break to next line on mobile */
+        padding: ${props => props.pristine ? `0 20px` : `149px 20px 0`};
+    }
     @media ${props => props.theme.phoneBreak} {
+        /* min-width 568px */
         width: 75%;
         max-width: 768px;
     }
+`;
 
-    /* min-width 768pxpx */
-    @media ${props => props.theme.tabletBreak} {
+const Header = styled.div`
+    position: ${props => props.pristine ? `relative` : `fixed`};
+    padding: ${props => props.pristine ? '0' : '24px 0'};
+    background: ${props => props.pristine ? `transparent` : props.theme.background};
+    width: ${props => props.pristine ? `inherit` : 'calc(100% - 40px)'};
+    max-width: 768px;
+    top: 0;
+    @media ${props => props.theme.phoneBreak} {
+        width: ${props => props.pristine ? `100%` : '75%'};
     }
 `;
 
-const Header = styled.h1`
+const Heading = styled.h1`
     margin: 0 0 10px;
     font-family: ${props => props.theme.font};
 `;
@@ -57,13 +68,13 @@ class App extends Component {
 
         return (
             <ThemeProvider theme={theme}>
-                <AppStyled
-                    pristine={pristine}
-                >
-                    <Header>Search for Ruby Gems</Header>
-                    <Search
-                        onSearchComplete={this.onSearchComplete}
-                    />
+                <AppStyled pristine={pristine}>
+                    <Header pristine={pristine}>
+                        <Heading>Search for Ruby Gems</Heading>
+                        <Search
+                            onSearchComplete={this.onSearchComplete}
+                        />
+                    </Header>
                     <Results
                         results={results}
                     />
