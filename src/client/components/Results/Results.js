@@ -5,7 +5,7 @@ import styled from "styled-components";
 import ResultCell from './ResultCell';
 
 const ResultsStyled = styled.div`
-
+    padding: 0 16px;
 `;
 
 class Results extends Component {
