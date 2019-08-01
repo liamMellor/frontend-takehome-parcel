@@ -61,11 +61,31 @@ const ResultCellIcons = styled.div`
     }
 `;
 
+const FavoriteIcon = styled(MdFavorite)`
+    color: ${props => props.favorite ? props.theme.primary : props.theme.background};
+    cursor: pointer;
+`;
+
 class ResultCell extends Component {
+
+    constructor(props) {
+        super(props);
+        this.onFavoriteClick = this.onFavoriteClick.bind(this);
+    }
+
+    onFavoriteClick() {
+        const { onFavoriteClick, result } = this.props;
+        onFavoriteClick(result);
+    }
 
     render() {
 
         const { result } = this.props;
+
+        const favoriteSvgProps = !result.favorite ? {
+            stroke: '#484ab3',
+            strokeWidth: 2,
+        } : {};
 
         return (
             <ResultCellStyled>
@@ -87,8 +107,11 @@ class ResultCell extends Component {
                         <MdFileDownload />
                     </a>
                     <div>
-                        <MdFavorite />
-                        {/* <MdFavorite stroke="red" stroke-width="3" /> */}
+                        <FavoriteIcon
+                            favorite={result.favorite}
+                            onClick={this.onFavoriteClick}
+                            {...favoriteSvgProps}
+                        />
                     </div>
                 </ResultCellIcons>
             </ResultCellStyled>
@@ -100,6 +123,7 @@ class ResultCell extends Component {
 
 ResultCell.propTypes = {
     result: PropTypes.object,
+    onFavoriteClick: PropTypes.func,
 };
 
 export default ResultCell;

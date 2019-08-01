@@ -12,12 +12,17 @@ class Results extends Component {
 
     render() {
 
-        const { results } = this.props;
+        const { results, onFavoriteClick } = this.props;
 
         return (
-            <ResultsStyled
-            >
-                {results.map(result => <ResultCell result={result} key={result.sha}/>)}
+            <ResultsStyled>
+                {results.map(result => (
+                    <ResultCell
+                        key={result.sha}
+                        result={result}
+                        onFavoriteClick={onFavoriteClick}
+                    />
+                ))}
             </ResultsStyled>
         );
 
@@ -27,6 +32,7 @@ class Results extends Component {
 
 Results.propTypes = {
     results: PropTypes.array,
+    onFavoriteClick: PropTypes.func,
 };
 
 export default Results;

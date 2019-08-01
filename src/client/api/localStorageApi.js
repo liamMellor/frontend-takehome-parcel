@@ -1,18 +1,18 @@
 
-const LocalStorageApi = {
+const LocalStorage = window.localStorage;
+const STORAGE_KEY = 'Gem_Favorites';
 
-    set: () => {
+const localStorageApi = {
 
+    set: (favorites) => {
+        LocalStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
     },
 
-    get: () => {
-
-    },
-
-    getAll: () => {
-
+    get:() => {
+        const favorites = LocalStorage.getItem(STORAGE_KEY);
+        return favorites !== null ? JSON.parse(favorites) : {};
     },
 
 };
 
-export default LocalStorageApi;
+export default localStorageApi;

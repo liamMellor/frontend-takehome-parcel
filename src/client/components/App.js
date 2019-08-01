@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import theme from "../theme";
 
+import favoritesApi from '../api/favoritesApi';
+
 import Search from './Search';
 import Results from './Results';
 
@@ -10,17 +12,17 @@ const AppStyled = styled.div`
     flex-flow: column nowrap;
     justify-content: center;
     margin: 0 auto;
+    font-family: Helvetica;
     height: ${props => props.pristine ? `100vh` : `100%`};
     padding: ${props => props.pristine ? `0 20px` : `192px 20px 0`};
     background: ${props => props.theme.background};
     color: ${props => props.theme.primary};
-    font-family: Helvetica;
     @media (min-width: 425px) {
         /* Special case where header copy break to next line on mobile */
         padding: ${props => props.pristine ? `0 20px` : `149px 20px 0`};
     }
+    /* min-width 568px */
     @media ${props => props.theme.phoneBreak} {
-        /* min-width 568px */
         width: 75%;
         max-width: 768px;
     }
@@ -49,9 +51,8 @@ class App extends Component {
         super(props);
         this.state = {
             results: [],
-            favorites: [],
             pristine: true,
-        }
+        };
         this.onSearchComplete = this.onSearchComplete.bind(this);
     }
 
@@ -60,6 +61,15 @@ class App extends Component {
             results,
             pristine: false,
         });
+    }
+
+    onFavoriteClick(result) {
+        if (result.favorite) {
+            favoritesApi.remove(result)
+        }
+        else {
+            favoritesApi.set(result);
+        }
     }
 
     render() {
@@ -77,8 +87,8 @@ class App extends Component {
                     </Header>
                     <Results
                         results={results}
+                        onFavoriteClick={this.onFavoriteClick}
                     />
-                    {/* <Favorites /> */}
                 </AppStyled>
             </ThemeProvider>
         );
