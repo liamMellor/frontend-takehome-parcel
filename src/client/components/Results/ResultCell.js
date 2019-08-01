@@ -78,8 +78,11 @@ class ResultCell extends Component {
 
     onFavoriteClick() {
         const { onFavoriteClick, result } = this.props;
+        onFavoriteClick({
+            ...result,
+            favorite: this.state.favorite,
+        });
         this.setState({ favorite: !this.state.favorite });
-        onFavoriteClick(result);
     }
 
     render() {
@@ -87,6 +90,8 @@ class ResultCell extends Component {
         const { result } = this.props;
         const { favorite } = this.state;
 
+        // This needs to be done here as stroke and stokeWidth arent css props
+        // Toggles heart fill and border for favorite state
         const favoriteSvgProps = !favorite ? {
             stroke: '#484ab3',
             strokeWidth: 2,
