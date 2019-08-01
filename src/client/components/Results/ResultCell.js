@@ -70,19 +70,24 @@ class ResultCell extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            favorite: props.result.favorite,
+        };
         this.onFavoriteClick = this.onFavoriteClick.bind(this);
     }
 
     onFavoriteClick() {
         const { onFavoriteClick, result } = this.props;
+        this.setState({ favorite: !this.state.favorite });
         onFavoriteClick(result);
     }
 
     render() {
 
         const { result } = this.props;
+        const { favorite } = this.state;
 
-        const favoriteSvgProps = !result.favorite ? {
+        const favoriteSvgProps = !favorite ? {
             stroke: '#484ab3',
             strokeWidth: 2,
         } : {};
@@ -108,7 +113,9 @@ class ResultCell extends Component {
                     </a>
                     <div>
                         <FavoriteIcon
-                            favorite={result.favorite}
+                            // We cannot pass a bool here or the DOM will throw a warning
+                            // Numbers work as well for styled component prop and suppress the dom warning
+                            favorite={favorite ? 1 : 0}
                             onClick={this.onFavoriteClick}
                             {...favoriteSvgProps}
                         />
