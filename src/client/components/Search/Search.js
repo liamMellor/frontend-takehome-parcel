@@ -16,6 +16,21 @@ const SearchStyled = styled.form`
     width: 100%;
 `;
 
+// This is used to fake the appearance of the top right
+// curved border on the search input since the actual input doesnt have a top border
+const SearchTransparentBorder = styled.div`
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    right: 0;
+    background: transparent;
+    border-top: 2px solid ${props => props.theme.primary};
+    border-right: 2px solid ${props => props.theme.primary};
+    border-radius: 0 24px 24px 0px;
+    top: -2px;
+    pointer-events: none;
+`;
+
 class Search extends Component {
 
     constructor(props) {
@@ -56,6 +71,7 @@ class Search extends Component {
                 <SearchSubmit
                     loading={loading}
                 />
+                <SearchTransparentBorder />
             </SearchStyled>
         );
 

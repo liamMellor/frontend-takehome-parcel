@@ -4,6 +4,7 @@ import theme from "../theme";
 
 import favoritesApi from '../api/favoritesApi';
 
+import Tabs from './Tabs';
 import Search from './Search';
 import Results from './Results';
 
@@ -12,7 +13,7 @@ const AppStyled = styled.div`
     flex-flow: column nowrap;
     justify-content: center;
     margin: 0 auto;
-    font-family: Helvetica;
+    font-family: ${props => props.theme.font};
     height: ${props => props.pristine ? `100vh` : `100%`};
     padding: ${props => props.pristine ? `0 20px` : `192px 20px 0`};
     background: ${props => props.theme.background};
@@ -42,7 +43,6 @@ const Header = styled.div`
 
 const Heading = styled.h1`
     margin: 0 0 10px;
-    font-family: ${props => props.theme.font};
 `;
 
 class App extends Component {
@@ -52,13 +52,22 @@ class App extends Component {
         this.state = {
             results: [],
             pristine: true,
+            activeTab: 0,
         };
         this.onSearchComplete = this.onSearchComplete.bind(this);
+        this.onTabClick = this.onTabClick.bind(this);
     }
 
     onSearchComplete(results) {
         this.setState({
             results,
+            pristine: false,
+        });
+    }
+
+    onTabClick(tabIndex) {
+        this.setState({
+            activeTab: tabIndex,
             pristine: false,
         });
     }
@@ -74,13 +83,17 @@ class App extends Component {
 
     render() {
 
-        const { results, pristine } = this.state;
+        const { results, pristine, activeTab } = this.state;
 
         return (
             <ThemeProvider theme={theme}>
                 <AppStyled pristine={pristine}>
                     <Header pristine={pristine}>
                         <Heading>Search for Ruby Gems</Heading>
+                        <Tabs
+                            activeTab={activeTab}
+                            onTabClick={this.onTabClick}
+                        />
                         <Search
                             onSearchComplete={this.onSearchComplete}
                         />
