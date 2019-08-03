@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import styled from "styled-components";
+import { MdFavorite } from "react-icons/md";
+import { FaGem } from "react-icons/fa";
+
 
 const TabsStyled = styled.div`
     display: flex;
@@ -14,6 +17,9 @@ const Tab = styled.div`
     border-bottom : ${props => props.active ? `none` : `2px solid ${props => props.theme.primary}`};
     text-align: center; 
     cursor: pointer;
+    svg {
+        font-size: 24px
+    }
 `;
 
 const LeftTab = styled(Tab)`
@@ -53,13 +59,13 @@ class Tabs extends Component {
                     active={activeTab === 0}
                     onClick={this.onLeftTabClick}
                 >
-                    Search
+                    <FaGem />
                 </LeftTab>
                 <RightTab
                     active={activeTab === 1}
                     onClick={this.onRightTabClick}
                 >
-                    Favorites
+                    <MdFavorite />
                 </RightTab>
             </TabsStyled>
         );

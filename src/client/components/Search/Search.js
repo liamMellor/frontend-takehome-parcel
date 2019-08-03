@@ -20,7 +20,8 @@ const SearchStyled = styled.form`
 // curved border on the search input since the actual input doesnt have a top border
 const SearchTransparentBorder = styled.div`
     position: absolute;
-    width: 50%;
+    /* Subtract 6px to account for the 2px borders *3 from the tabs */
+    width: calc(50% - 6px);
     height: 100%;
     right: 0;
     background: transparent;

@@ -61,6 +61,7 @@ class App extends Component {
     onSearchComplete(results) {
         this.setState({
             results,
+            activeTab: 0,
             pristine: false,
         });
     }
