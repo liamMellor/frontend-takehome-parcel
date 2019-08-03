@@ -15,12 +15,12 @@ const AppStyled = styled.div`
     margin: 0 auto;
     font-family: ${props => props.theme.font};
     height: ${props => props.pristine ? `100vh` : `100%`};
-    padding: ${props => props.pristine ? `0 20px` : `192px 20px 0`};
+    padding: ${props => props.pristine ? `0 20px` : `237px 20px 0`};
     background: ${props => props.theme.background};
     color: ${props => props.theme.primary};
     @media (min-width: 425px) {
         /* Special case where header copy break to next line on mobile */
-        padding: ${props => props.pristine ? `0 20px` : `149px 20px 0`};
+        padding: ${props => props.pristine ? `0 20px` : `195px 20px 0`};
     }
     /* min-width 568px */
     @media ${props => props.theme.phoneBreak} {
