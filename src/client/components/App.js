@@ -6,7 +6,7 @@ import favoritesApi from '../api/favoritesApi';
 
 import Tabs from './Tabs';
 import Search from './Search';
-import Results from './Results';
+import List from './List';
 
 const AppStyled = styled.div`
     display: flex;
@@ -96,7 +96,7 @@ class App extends Component {
     render() {
 
         const { results, favorites, pristine, activeTab } = this.state;
-        const list = activeTab === 0 ? results : favorites;
+        const items = activeTab === 0 ? results : favorites;
 
         return (
             <ThemeProvider
@@ -118,8 +118,8 @@ class App extends Component {
                         />
                     </Header>
                     { !pristine ?
-                        <Results
-                            results={list}
+                        <List
+                            items={items}
                             onFavoriteClick={this.onFavoriteClick}
                         />
                         :

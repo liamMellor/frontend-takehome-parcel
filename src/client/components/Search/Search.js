@@ -16,7 +16,7 @@ const SearchStyled = styled.form`
 
 // This is used to fake the appearance of the top right
 // curved border on the search input since the actual input doesnt have a top border
-const SearchTransparentBorder = styled.div`
+const TransparentBorder = styled.div`
     position: absolute;
     /* Subtract 6px to account for the 2px borders *3 from the tabs */
     width: calc(50% - 6px);
@@ -70,7 +70,7 @@ class Search extends Component {
                 <SearchSubmit
                     loading={loading}
                 />
-                <SearchTransparentBorder />
+                <TransparentBorder />
             </SearchStyled>
         );
 

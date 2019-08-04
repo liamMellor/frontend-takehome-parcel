@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { MdFileDownload, MdFavorite } from "react-icons/md";
 
-const ResultCellStyled = styled.div`
+const ListItemStyled = styled.div`
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
@@ -20,7 +20,7 @@ const ResultCellStyled = styled.div`
     }
 `;
 
-const ResultCellInfo = styled.div`
+const Info = styled.div`
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
@@ -32,11 +32,11 @@ const ResultCellInfo = styled.div`
     }
 `;
 
-const ResultCellDescription = styled.div`
+const Description = styled.div`
     line-height: 1.5;
 `;
 
-const ResultCellIcons = styled.div`
+const Icons = styled.div`
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
@@ -64,22 +64,22 @@ const FavoriteIcon = styled(MdFavorite)`
     cursor: pointer;
 `;
 
-class ResultCell extends Component {
+class ListItem extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             // Not ideal using a state prop to manage the favoriting but it's better than
             // re-rendering the entire list when an item is favorited or un-favorited
-            favorite: props.result.favorite,
+            favorite: props.item.favorite,
         };
         this.onFavoriteClick = this.onFavoriteClick.bind(this);
     }
 
     onFavoriteClick() {
-        const { onFavoriteClick, result } = this.props;
+        const { onFavoriteClick, item } = this.props;
         onFavoriteClick({
-            ...result,
+            ...item,
             favorite: this.state.favorite,
         });
         this.setState({ favorite: !this.state.favorite });
@@ -87,7 +87,7 @@ class ResultCell extends Component {
 
     render() {
 
-        const { result } = this.props;
+        const { item } = this.props;
         const { favorite } = this.state;
 
         // This needs to be done here as stroke and stokeWidth arent css props
@@ -98,23 +98,23 @@ class ResultCell extends Component {
         } : {};
 
         return (
-            <ResultCellStyled>
-                <ResultCellInfo>
+            <ListItemStyled>
+                <Info>
                     <h3>
                         <a
-                            href={result.project_uri}
+                            href={item.project_uri}
                             target="_blank"
                         >
-                            {result.name}
+                            {item.name}
                         </a>
                     </h3>
-                    <ResultCellDescription>{result.info}</ResultCellDescription>
-                    <div>- {result.authors}</div>
-                </ResultCellInfo>
-                <ResultCellIcons>
-                    <div>v{result.version}</div>
+                    <Description>{item.info}</Description>
+                    <div>- {item.authors}</div>
+                </Info>
+                <Icons>
+                    <div>v{item.version}</div>
                     <a
-                        href={result.gem_uri}
+                        href={item.gem_uri}
                     >
                         <MdFileDownload />
                     </a>
@@ -127,17 +127,17 @@ class ResultCell extends Component {
                             {...favoriteSvgProps}
                         />
                     </div>
-                </ResultCellIcons>
-            </ResultCellStyled>
+                </Icons>
+            </ListItemStyled>
         );
 
     }
 
 }
 
-ResultCell.propTypes = {
-    result: PropTypes.object,
+ListItem.propTypes = {
+    item: PropTypes.object,
     onFavoriteClick: PropTypes.func,
 };
 
-export default ResultCell;
+export default ListItem;
