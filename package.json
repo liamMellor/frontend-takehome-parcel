@@ -7,7 +7,7 @@
     "build": "./node_modules/.bin/parcel build ./index.html",
     "dev": "concurrently './node_modules/.bin/parcel ./index.html' 'node ./src/server/server'",
     "start": "NODE_ENV=production node ./src/server/server",
-    "test": "echo 'Your test command goes here'"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,13 @@
     "react-dom": "^16.8.6",
     "react-icons": "^3.7.0",
     "styled-components": "^4.3.2",
-    "url-polyfill": "^1.1.7"
+    "url-polyfill": "^1.1.7",
+    "whatwg-fetch": "^3.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0"
+  }
 }

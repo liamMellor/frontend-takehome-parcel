@@ -1,4 +1,9 @@
+// polyfill for browser 'fetch'
+import 'whatwg-fetch'
 import favoritesApi from './favoritesApi';
+
+const RUBY_GEM_SEARCH_URL = 'http://localhost:3000/api/v1/search.json';
+const windowFetch = window.fetch;
 
 /*
 * Generic and lightweight wrapper for native "fetch". Would be separated to own module as api grows
@@ -10,7 +15,7 @@ import favoritesApi from './favoritesApi';
 const fetchWrapped = (baseUrl, queryParams) => {
     const url = new URL(baseUrl);
     Object.keys(queryParams).forEach(key => url.searchParams.append(key, queryParams[key]));
-    return fetch(url).then(response => {
+    return windowFetch(url).then(response => {
         return response.json();
     });
 };
