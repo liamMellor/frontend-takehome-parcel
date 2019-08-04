@@ -51,11 +51,19 @@ class App extends Component {
         super(props);
         this.state = {
             results: [],
+            favorites: [],
             pristine: true,
             activeTab: 0,
         };
         this.onSearchComplete = this.onSearchComplete.bind(this);
         this.onTabClick = this.onTabClick.bind(this);
+        this.onFavoriteClick = this.onFavoriteClick.bind(this);
+    }
+
+    componentDidMount() {
+        this.setState({
+            favorites: favoritesApi.getArray(),
+        });
     }
 
     onSearchComplete(results) {
@@ -80,11 +88,15 @@ class App extends Component {
         else {
             favoritesApi.set(result);
         }
+        this.setState({
+            favorites: favoritesApi.getArray(),
+        });
     }
 
     render() {
 
-        const { results, pristine, activeTab } = this.state;
+        const { results, favorites, pristine, activeTab } = this.state;
+        const list = activeTab === 0 ? results : favorites;
 
         return (
             <ThemeProvider theme={theme}>
@@ -100,7 +112,7 @@ class App extends Component {
                         />
                     </Header>
                     <Results
-                        results={results}
+                        results={list}
                         onFavoriteClick={this.onFavoriteClick}
                     />
                 </AppStyled>
