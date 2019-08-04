@@ -7,7 +7,7 @@ const SearchSubmitStyled = styled.button`
     display: flex;
     position: absolute;
     padding: 0;
-    right: 12px;
+    right: 20px;
     height: 100%;
     border-radius: 0 24px 24px 0;
     font-size: 24px;
