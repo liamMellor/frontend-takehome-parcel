@@ -14,7 +14,6 @@ const ResultCellStyled = styled.div`
         text-decoration: none;
         color: ${props => props.theme.primary};
     }
-    /* min-width 568px */
     @media ${props => props.theme.phoneBreak} {
         flex-flow: row nowrap;
         align-items: center;
@@ -49,7 +48,6 @@ const ResultCellIcons = styled.div`
         align-items: center;
         margin-right: 24px;
     }
-    /* min-width 568px */
     @media ${props => props.theme.phoneBreak} {
         justify-content: flex-end;
         align-items: center;
@@ -71,6 +69,8 @@ class ResultCell extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            // Not ideal using a state prop to manage the favoriting but it's better than
+            // re-rendering the entire list when an item is favorited or un-favorited
             favorite: props.result.favorite,
         };
         this.onFavoriteClick = this.onFavoriteClick.bind(this);
@@ -113,7 +113,9 @@ class ResultCell extends Component {
                 </ResultCellInfo>
                 <ResultCellIcons>
                     <div>v{result.version}</div>
-                    <a href={result.gem_uri}>
+                    <a
+                        href={result.gem_uri}
+                    >
                         <MdFileDownload />
                     </a>
                     <div>

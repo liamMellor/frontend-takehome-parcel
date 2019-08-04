@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import styled from "styled-components";
 
-// components
+import { search } from "../../api/gemApi";
+
 import SearchInput from "./SearchInput";
 import SearchSubmit from "./SearchSubmit";
-
-// services
-import { search } from "../../api/gemApi";
 
 const SearchStyled = styled.form`
     position: relative;

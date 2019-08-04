@@ -13,32 +13,22 @@ const NoResults = styled.div`
     margin-top: 40px;
 `;
 
-class Results extends Component {
-
-    render() {
-
-        const { results, onFavoriteClick } = this.props;
-
-        return (
-            <ResultsStyled>
-                {!results.length ?
-                    <NoResults>There's nothing here!</NoResults>
-                    :
-                    null
-                }
-                {results.map(result => (
-                    <ResultCell
-                        key={result.sha}
-                        result={result}
-                        onFavoriteClick={onFavoriteClick}
-                    />
-                ))}
-            </ResultsStyled>
-        );
-
-    }
-
-}
+const Results = ({ results, onFavoriteClick }) => (
+    <ResultsStyled>
+        {!results.length ?
+            <NoResults>There's nothing here!</NoResults>
+            :
+            null
+        }
+        {results.map(result => (
+            <ResultCell
+                key={result.sha}
+                result={result}
+                onFavoriteClick={onFavoriteClick}
+            />
+        ))}
+    </ResultsStyled>
+);
 
 Results.propTypes = {
     results: PropTypes.array,
