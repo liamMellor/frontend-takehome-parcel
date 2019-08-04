@@ -5,6 +5,7 @@ import { MdSearch, MdAutorenew } from "react-icons/md";
 
 const SearchSubmitStyled = styled.button`
     display: flex;
+    align-items: center;
     position: absolute;
     padding: 0;
     right: 20px;
