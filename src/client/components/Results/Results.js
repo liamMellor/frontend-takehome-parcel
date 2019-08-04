@@ -8,6 +8,11 @@ const ResultsStyled = styled.div`
     padding: 0 16px;
 `;
 
+const NoResults = styled.div`
+    text-align: center;
+    margin-top: 40px;
+`;
+
 class Results extends Component {
 
     render() {
@@ -16,6 +21,11 @@ class Results extends Component {
 
         return (
             <ResultsStyled>
+                {!results.length ?
+                    <NoResults>There's nothing here!</NoResults>
+                    :
+                    null
+                }
                 {results.map(result => (
                     <ResultCell
                         key={result.sha}

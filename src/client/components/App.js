@@ -99,9 +99,15 @@ class App extends Component {
         const list = activeTab === 0 ? results : favorites;
 
         return (
-            <ThemeProvider theme={theme}>
-                <AppStyled pristine={pristine}>
-                    <Header pristine={pristine}>
+            <ThemeProvider
+                theme={theme}
+            >
+                <AppStyled
+                    pristine={pristine}
+                >
+                    <Header
+                        pristine={pristine}
+                    >
                         <Heading>Search for Ruby Gems</Heading>
                         <Tabs
                             activeTab={activeTab}
@@ -111,10 +117,14 @@ class App extends Component {
                             onSearchComplete={this.onSearchComplete}
                         />
                     </Header>
-                    <Results
-                        results={list}
-                        onFavoriteClick={this.onFavoriteClick}
-                    />
+                    { !pristine ?
+                        <Results
+                            results={list}
+                            onFavoriteClick={this.onFavoriteClick}
+                        />
+                        :
+                        null
+                    }
                 </AppStyled>
             </ThemeProvider>
         );
