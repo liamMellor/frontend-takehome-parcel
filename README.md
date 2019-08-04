@@ -30,3 +30,27 @@ To see a sample request in action, run the following in your command line.
 ```bash
 curl http://localhost:3000/api/v1/search.json?query=rails
 ```
+
+## Testing
+
+### Step 1: Start the development server
+
+```bash
+npm run dev
+```
+
+### Step 2: Run the tests
+
+In a separate command line process, run:
+
+```bash
+npm run test
+```
+
+**Note there are only two tests. Further iterations would include a Jest LocalStorage polyfill in order to properly mock the function the browser LocalStorage and test the functionality of the `favoriteApi` functions.
+
+## Looking forward
+
+Were the application to be scaled I'd want to invest more time in scaffolding out the state management system. I briefly considered using `Hooks` and `ContextApi` near the beginning of the project but ultimately felt like it was a little overkill given the scope of the work. The only use of React `Context` is for the styled-components theme-ing.
+
+Thanks for the consideration! I really enjoyed designing off the blank canvas!
