@@ -8,20 +8,20 @@ const favoritesApi = {
         gem.favorite = true;
         favorites[gem.sha] = gem;
         localStorageApi.set(favorites);
-        return favorites;
     },
 
     remove: (gem) => {
         delete favorites[gem.sha];
         localStorageApi.set(favorites);
-        return favorites;
     },
 
     get: () => {
+        // Returns favorites as object for o(1) lookup when checking against search results
         return favorites;
     },
 
     getArray: () => {
+        // Returns favorites converted to array for iteration in UI
         // Object.values would work here but there's no IE support
         return Object.keys(favorites).map(key => favorites[key]);
     }
